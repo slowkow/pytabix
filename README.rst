@@ -1,5 +1,5 @@
-tabix
-=====
+pytabix
+=======
 
 Hyeshik Chang, Kamil Slowikowski
 
@@ -24,7 +24,7 @@ specifying a query with a sequence name, start, and end:
 
 .. code::
 
-    pip install --user tabix
+    pip install --user pytabix
 
 .. code:: python
 
