@@ -1,7 +1,8 @@
 /*-
  * The MIT License
  *
- * Copyright (c) 2011 Seoul National University.
+ * Copyright (c) 2011 by Seoul National University.
+ *               2014 by Kamil Slowikowski <slowikow@broadinstitute.org>
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
