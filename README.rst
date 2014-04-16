@@ -9,6 +9,17 @@ This module allows fast random access to files compressed with bgzip_ and
 indexed by tabix_. It includes a C extension with code from klib_. The bgzip
 and tabix programs are available here_.
 
+Installation
+------------
+
+::
+
+    pip install --user pytabix
+
+
+Synopsis
+--------
+
 Genomics data is often in a table where each row corresponds to a genomic
 region (start, end) or a position::
 
@@ -21,10 +32,6 @@ region (start, end) or a position::
 
 With tabix_, you can quickly retrieve all rows in a genomic region by
 specifying a query with a sequence name, start, and end:
-
-.. code::
-
-    pip install --user pytabix
 
 .. code:: python
 
@@ -51,6 +58,7 @@ specifying a query with a sequence name, start, and end:
 .. code:: python
 
     ['1', '1000071', '.', 'C', 'T']
+
 
 .. _bgzip: http://samtools.sourceforge.net/tabix.shtml
 .. _tabix: http://samtools.sourceforge.net/tabix.shtml

@@ -331,6 +331,15 @@ static PyMethodDef tabix_methods[] = {
                   "region : str\n"
                   "    Query string like \"seq:start-end\".\n")
     },
+    /*
+    {
+        "header",
+        (PyCFunction)tabix_header,
+        METH_VARARGS,
+        PyDoc_STR("Get the header for a file (VCF, SAM, GTF, etc.).\n\n"
+                  "    >>> tb.header()\n")
+    },
+    */
     {NULL, NULL}           /* sentinel */
 };
 /*
