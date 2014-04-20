@@ -53,15 +53,51 @@ specifying a query with a sequence name, start, and end:
     # Each record is a list of strings.
     for record in records:
         print record[:5]
-        break
 
 .. code:: python
 
-    ['1', '1000071', '.', 'C', 'T']
+    ['1', '1000760', 'rs75316104']
+    ['1', '1000760', 'rs75316104']
+    ['1', '1000894', 'rs114006445']
+    ['1', '1000910', 'rs79750022']
+    ['1', '1001177', 'rs4970401']
+    ['1', '1001256', 'rs78650406']
 
+
+Example
+-------
+
+Let's say you have a table of gene coordinates:
+
+.. code:: bash
+
+    $ zcat example.bed.gz | shuf | head -n5 | column -t
+    chr19  53611131   53636172   55786   ZNF415
+    chr10  72149121   72150375   221017  CEP57L1P1
+    chr4   185009858  185139113  133121  ENPP6
+    chrX   132669772  133119672  2719    GPC3
+    chr6   134924279  134925376  114182  FAM8A6P
+
+Sort_ it by chromosome, then by start and end positions. Then, use bgzip_ to
+deflate the file into compressed blocks:
+
+.. code:: bash
+
+    $ zcat example.bed.gz | sort -k1V -k2n -k3n | bgzip > example.bed.bgz
+
+The compressed size is usually slightly larger than that obtained with gzip.
+
+Index the file with tabix_:
+
+.. code:: bash
+
+    $ tabix -s 1 -b 2 -e 3 example.bed.gz
+    
+    $ ls
+    example.bed.gz  example.bed.gz.tbi
 
 .. _bgzip: http://samtools.sourceforge.net/tabix.shtml
 .. _tabix: http://samtools.sourceforge.net/tabix.shtml
 .. _klib: https://github.com/jmarshall/klib
 .. _here: http://sourceforge.net/projects/samtools/files/tabix/
-
+.. _Sort: https://www.gnu.org/software/coreutils/manual/html_node/Details-about-version-sort.html#Details-about-version-sort
