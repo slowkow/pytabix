@@ -1,20 +1,26 @@
 pytabix
 =======
 
-Hyeshik Chang, Kamil Slowikowski
-
-April 16, 2014
-
 This module allows fast random access to files compressed with bgzip_ and
 indexed by tabix_. It includes a C extension with code from klib_. The bgzip
 and tabix programs are available here_.
 
+
 Installation
 ------------
 
-::
+.. code:: bash
 
-    pip install --user pytabix
+    $ pip install --user pytabix
+
+or
+
+.. code:: bash
+
+    $ wget https://pypi.python.org/packages/source/p/pytabix/pytabix-0.1.tar.gz
+    $ tar xf pytabix-0.1.tar.gz
+    $ cd pytabix-0.1
+    $ python setup.py install --user
 
 
 Synopsis
