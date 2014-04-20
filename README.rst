@@ -94,7 +94,7 @@ Index the file with tabix_:
     $ tabix -s 1 -b 2 -e 3 example.bed.gz
     
     $ ls
-    example.bed.gz  example.bed.gz.tbi
+    example.bed.gz  example.bed.bgz  example.bed.bgz.tbi
 
 .. _bgzip: http://samtools.sourceforge.net/tabix.shtml
 .. _tabix: http://samtools.sourceforge.net/tabix.shtml
