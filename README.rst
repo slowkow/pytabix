@@ -6,7 +6,7 @@ indexed by tabix_. It includes a C extension with code from klib_. The bgzip
 and tabix programs are available here_.
 
 Instead of using this module, you can install tabix_ yourself and
-easily call it from Python as shown below_.
+easily call it from Python as shown at the bottom of this page.
 
 Synopsis
 --------
@@ -83,10 +83,8 @@ or
     python setup.py install --user
 
 
-.. _below:
-
 Alternative: Use `subprocess`
---------------------------------------
+-----------------------------
 
 .. code:: python
 
