@@ -5,8 +5,22 @@ This module allows fast random access to files compressed with bgzip_ and
 indexed by tabix_. It includes a C extension with code from klib_. The bgzip
 and tabix programs are available here_.
 
-Instead of using this module, you can install tabix_ yourself and
-easily call it from Python as shown at the bottom of this page.
+Alternatives: 
+
+- Instead of using this module, you can install tabix_ yourself and
+  easily call it from Python as shown at the bottom of this page.
+  
+- pysam_ - A python module for reading and manipulating Samfiles.
+  It's a lightweight wrapper of the samtools C-API.
+  Pysam also includes an interface for tabix.
+
+- hts-python_ - A pythonic wrapper for htslib_ C-API using python cffi_.
+
+.. _pysam: https://github.com/pysam-developers/pysam
+.. _hts-python: https://github.com/brentp/hts-python
+.. _htslib: https://github.com/samtools/htslib
+.. _cffi: https://cffi.readthedocs.org
+
 
 Synopsis
 --------
