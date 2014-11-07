@@ -1,7 +1,7 @@
 pytabix
 =======
 
-This module allows fast random access to files compressed with bgzip_ and
+This module allows fast random access to sorted files compressed with bgzip_ and
 indexed by tabix_. It includes a C extension with code from klib_. The bgzip
 and tabix programs are available here_.
 
@@ -12,7 +12,7 @@ Alternatives:
   
 - pysam_ - A python module for reading and manipulating Samfiles.
   It's a lightweight wrapper of the samtools C-API.
-  Pysam also includes an interface for tabix.
+  Pysam also includes an interface for tabix_.
 
 - hts-python_ - A pythonic wrapper for htslib_ C-API using python cffi_.
 
@@ -25,34 +25,7 @@ Alternatives:
 Synopsis
 --------
 
-Prepare a table for tabix:
-
-.. code:: bash
-
-    $ head -n5 example.bed | column -t
-    chr19  53611131   53636172   ZNF415
-    chr10  72149121   72150375   CEP57L1P1
-    chr4   185009858  185139113  ENPP6
-    chrX   132669772  133119672  GPC3
-    chr6   134924279  134925376  FAM8A6P
-
-Sort_ it by chromosome, start, and end. Then, use bgzip_ to
-deflate the file into compressed blocks:
-
-.. code:: bash
-
-    $ sort -k1V -k2n -k3n example.bed | bgzip > example.bed.gz
-
-Index the compressed file with tabix_:
-
-.. code:: bash
-
-    $ tabix -s 1 -b 2 -e 3 example.bed.gz
-    
-    $ ls
-    example.bed  example.bed.gz  example.bed.gz.tbi
-
-Open a local or remote file that has already been indexed:
+Open a local or remote file that has already been sorted, compressed, and indexed:
 
 .. code:: python
 
@@ -95,6 +68,38 @@ or
     tar xf pytabix-0.1.tar.gz
     cd pytabix-0.1
     python setup.py install --user
+
+How to prepare a file for `tabix`
+---------------------------------
+
+1. Sort_ the file by chromosome, start, and end.
+2. Compress the file with bgzip_.
+3. Index the compressed file with tabix_.
+
+.. code:: bash
+
+    $ head -n5 example.bed | column -t
+    chr19  53611131   53636172   ZNF415
+    chr10  72149121   72150375   CEP57L1P1
+    chr4   185009858  185139113  ENPP6
+    chrX   132669772  133119672  GPC3
+    chr6   134924279  134925376  FAM8A6P
+
+1. Sort_ it by chromosome, start, and end.
+2. Then, use bgzip_ to deflate the file into compressed blocks:
+
+.. code:: bash
+
+    $ sort -k1V -k2n -k3n example.bed | bgzip > example.bed.gz
+
+3. Index the compressed file with tabix_:
+
+.. code:: bash
+
+    $ tabix -s 1 -b 2 -e 3 example.bed.gz
+    
+    $ ls
+    example.bed  example.bed.gz  example.bed.gz.tbi
 
 
 Alternative: Use `subprocess`
