@@ -232,7 +232,7 @@ tabix_query(TabixObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "sii:query", &name, &begin, &end))
         return NULL;
 
-    result = ti_query(self->tb, name, begin, end);
+    result = ti_query(self->tb, name, begin - 1, end);
     if (result == NULL) {
         PyErr_SetString(TabixError, "query failed");
         return NULL;
@@ -250,7 +250,7 @@ tabix_queryi(TabixObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "iii:queryi", &tid, &begin, &end))
         return NULL;
 
-    result = ti_queryi(self->tb, tid, begin, end);
+    result = ti_queryi(self->tb, tid, begin - 1, end);
     if (result == NULL) {
         PyErr_SetString(TabixError, "query failed");
         return NULL;

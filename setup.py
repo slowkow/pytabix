@@ -44,7 +44,7 @@ EXT_MODULES = [
 
 setup(
     name = "pytabix",
-    version = "0.1",
+    version = "0.0.2",
     description = "Python interface for tabix",
     url = "https://github.com/slowkow/pytabix",
     author = "Hyeshik Chang, Kamil Slowikowski",
