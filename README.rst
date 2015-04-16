@@ -64,9 +64,9 @@ or
 
 .. code:: bash
 
-    wget https://pypi.python.org/packages/source/p/pytabix/pytabix-0.1.tar.gz
-    tar xf pytabix-0.1.tar.gz
-    cd pytabix-0.1
+    wget https://pypi.python.org/packages/source/p/pytabix/pytabix-0.0.2.tar.gz
+    tar xf pytabix-0.0.2.tar.gz
+    cd pytabix-0.0.2
     python setup.py install --user
 
 How to prepare a file for `tabix`
