@@ -69,6 +69,17 @@ or
     cd pytabix-0.0.2
     python setup.py install --user
 
+Contributing
+------------
+
+Please `submit an issue`__ to report bugs or ask questions.
+
+__ https://github.com/slowkow/pytabix/issues
+
+Please contribute bug fixes or new features with a `pull request`__ to this repository.
+
+__ https://help.github.com/articles/using-pull-requests/
+
 How to prepare a file for `tabix`
 ---------------------------------
 
