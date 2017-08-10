@@ -200,8 +200,7 @@ tabix_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
 
     tb = ti_open(fn, fnidx);
     if (tb == NULL) {
-        PyErr_SetString(TabixError, "Can't open the index file.");
-        return NULL;
+        return PyErr_Format(TabixError, "Can't open index file: %s", fn);
     }
 
     self = (TabixObject *)type->tp_alloc(type, 0);
@@ -234,8 +233,7 @@ tabix_query(TabixObject *self, PyObject *args)
 
     result = ti_query(self->tb, name, begin - 1, end);
     if (result == NULL) {
-        PyErr_SetString(TabixError, "query failed");
-        return NULL;
+        return PyErr_Format(TabixError, "query failed: %s:%d-%d", name, begin, end);
     }
 
     return tabixiter_create(self, result);
@@ -252,8 +250,7 @@ tabix_queryi(TabixObject *self, PyObject *args)
 
     result = ti_queryi(self->tb, tid, begin - 1, end);
     if (result == NULL) {
-        PyErr_SetString(TabixError, "query failed");
-        return NULL;
+        return PyErr_Format(TabixError, "query failed: tid: %d range: %d-%d", tid, begin, end);
     }
 
     return tabixiter_create(self, result);
@@ -270,8 +267,7 @@ tabix_querys(TabixObject *self, PyObject *args)
 
     result = ti_querys(self->tb, reg);
     if (result == NULL) {
-        PyErr_SetString(TabixError, "query failed");
-        return NULL;
+        return PyErr_Format(TabixError, "query failed: %s", reg);
     }
 
     return tabixiter_create(self, result);

@@ -83,6 +83,15 @@ class TabixTest(unittest.TestCase):
         tb_result = [ [x[0], x[3], x[4]] for x in it ]
         self.assertEqual(self.result, tb_result)
 
+    def test_query_bad_seq(self):
+        with self.assertRaisesRegexp(tabix.TabixError, "^query failed: fred:{}-{}$".format(self.start, self.end)):
+            it = self.tb.query("fred", self.start, self.end)
+
+    def test_local_bad_file(self):
+        file1 = "this_file_does_not_really_exist"
+        with self.assertRaisesRegexp(tabix.TabixError, "^Can't open index file: {}$".format(file1)):
+            tabix.open(file1)
+
     def test_remote_file(self):
         file1 = "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20100804/" \
                 "ALL.2of4intersection.20100804.genotypes.vcf.gz"
@@ -90,7 +99,7 @@ class TabixTest(unittest.TestCase):
 
     def test_remote_file_bad_url(self):
         file1 = "ftp://badurl"
-        with self.assertRaises(tabix.TabixError):
+        with self.assertRaisesRegexp(tabix.TabixError, "^Can't open index file: {}$".format(file1)):
             tabix.open(file1)
 
 
